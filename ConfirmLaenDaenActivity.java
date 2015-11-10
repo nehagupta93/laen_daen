@@ -26,7 +26,7 @@ public class ConfirmLaenDaenActivity extends AppCompatActivity {
         TextView laendarValue = (TextView) findViewById(R.id.laendarValue);
         TextView daendarValue = (TextView) findViewById(R.id.daendarValue);
         TextView dateValue = (TextView) findViewById(R.id.dateValue);
-        TextView amountValue = (TextView) findViewById(R.id.amountValue);
+        TextView amountValue = (TextView) findViewById(R.id.amountInput);
         TextView reasonValue = (TextView) findViewById(R.id.reasonValue);
 
         LaenDaen laenDaen = new LaenDaen(index);
