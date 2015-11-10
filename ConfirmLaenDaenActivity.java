@@ -14,6 +14,8 @@ import java.util.HashMap;
 public class ConfirmLaenDaenActivity extends AppCompatActivity {
 
     int index;
+    float amount;
+    String laendar, daendar;
     private static final String CONFIRM_URL = "http://laendaen.esy.es/phpfiles/confirmLaenDaen.php";
 
     @Override
@@ -35,6 +37,9 @@ public class ConfirmLaenDaenActivity extends AppCompatActivity {
         dateValue.setText(laenDaen.date);
         amountValue.setText("Rs."+laenDaen.amount);
         reasonValue.setText(laenDaen.reason);
+        this.amount = laenDaen.amount;
+        this.laendar = laenDaen.laendar;
+        this.daendar = laenDaen.daendar;
     }
 
     public void confirmClicked(View view){
@@ -55,7 +60,7 @@ public class ConfirmLaenDaenActivity extends AppCompatActivity {
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
-                Toast.makeText(ConfirmLaenDaenActivity.this, s, Toast.LENGTH_LONG);
+                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG);
                 if(s.equals("Laen-Daen Confirmed"))
                     success = true;
             }
@@ -64,6 +69,9 @@ public class ConfirmLaenDaenActivity extends AppCompatActivity {
             protected String doInBackground(String... params) {
                 HashMap<String, String> input = new HashMap<String, String>();
                 input.put("index", params[0]);
+                input.put("amount", params[1]);
+                input.put("laendar", params[2]);
+                input.put("daendar", params[3]);
 
                 String result = ruc.sendPostRequest(CONFIRM_URL, input);
                 return result;
@@ -71,7 +79,7 @@ public class ConfirmLaenDaenActivity extends AppCompatActivity {
         }
 
         ConfirmLaenDaen cld = new ConfirmLaenDaen();
-        cld.execute(index+"");
+        cld.execute(index+"", amount+"", laendar, daendar);
 
         if (cld.success)
             startActivity(new Intent(this, NewLaenDaenActivity.class));
