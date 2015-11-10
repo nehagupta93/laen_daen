@@ -7,9 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.util.List;
-import java.util.zip.Inflater;
-
 public class LaendaenAdapter extends ArrayAdapter<String>{
 
     public LaendaenAdapter(Context context, String[] options) {
@@ -26,7 +23,7 @@ public class LaendaenAdapter extends ArrayAdapter<String>{
         TextView laendarIdValue = (TextView) customView.findViewById(R.id.laendarIdValue);
         TextView daendarIdValue = (TextView) customView.findViewById(R.id.daendarIdValue);
         TextView dateValue = (TextView) customView.findViewById(R.id.dateValue);
-        TextView amountValue = (TextView) customView.findViewById(R.id.amountValue);
+        TextView amountValue = (TextView) customView.findViewById(R.id.amountInput);
         TextView reasonValue = (TextView) customView.findViewById(R.id.reasonValue);
 
         LaenDaen laenDaen = new LaenDaen(Integer.parseInt(singleOption));
