@@ -19,8 +19,8 @@ public class VerifyEmailActivity extends AppCompatActivity {
     private static float balance;
     private static int verificationCode;
 
-    private static final String REGISTER_URL = "http://laendaen.esy.es/phpfiles/register.php";
-    private static final String EMAIL_VERIFY_URL = "http://laendaen.esy.es/phpfiles/verifyEmail.php";
+    private static final String REGISTER_URL = "http://31.170.165.112/laen_daen/register.php";
+    private static final String EMAIL_VERIFY_URL = "http://31.170.165.112/laen_daen/verifyEmail.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

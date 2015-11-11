@@ -53,7 +53,7 @@ public class RegisterUserClass {
                 response = br.readLine();
             }
             else {
-                response="Error Registering";
+                response="Error Connecting";
             }
         } catch (Exception e) {
             e.printStackTrace();

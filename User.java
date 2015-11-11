@@ -14,7 +14,7 @@ public class User {
     String userId, emailId, password;
     float balance;
 
-    private static final String GETUSERDATA_URL = "http://laendaen.esy.es/phpfiles/getUserData.php";
+    private static final String GETUSERDATA_URL = "http://31.170.165.112/laen_daen/getUserData.php";
 
     public User(String userId, String emailId, String password, float balance){
         this.userId = userId;

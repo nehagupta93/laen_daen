@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 public class SearchUserActivity extends AppCompatActivity {
 
-    private static final String SEARCH_URL = "http://laendaen.esy.es/phpfiles/searchUser.php";
+    private static final String SEARCH_URL = "http://31.170.165.112/laen_daen/searchUser.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
