@@ -12,7 +12,7 @@ public class LaenDaenArrays {
     LaenDaen laendars[], daendars[], laendarRequests[], laendarsRequested[], daendarRequests[], daendarsRequested[], laenDaenRequests[], laenDaensRequested[];
     int laendarCounter, daendarCounter, laendarRequestsCounter, laendarsRequestedCounter, daendarRequestsCounter, daendarsRequestedCounter;
 
-    private static final String LAENDAENINDICES_URL = "http://laendaen.esy.es/phpfiles/fetchLaenDaen.php";
+    private static final String LAENDAENINDICES_URL = "http://31.170.165.112/laen_daen/fetchLaenDaen.php";
 
     public LaenDaen[] getLaendars(String userId){
         GetIndices gi = new GetIndices();

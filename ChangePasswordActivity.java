@@ -19,7 +19,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
     UserLocalStore userLocalStore;
 
-    private static final String CHANGEPASSSWORD_URL = "http://laendaen.esy.es/phpfiles/changePassword.php";
+    private static final String CHANGEPASSSWORD_URL = "http://31.170.165.112/laen_daen/changePassword.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +43,12 @@ public class ChangePasswordActivity extends AppCompatActivity {
             return;
         }
 
+        User user = userLocalStore.getLoggedInUser();
+        if(!oldPassword.equals(user.password)){
+            Toast.makeText(ChangePasswordActivity.this, "incorrect old password", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         class ChangePassword extends AsyncTask<String, Void, String>{
 
             ProgressDialog loading;
@@ -60,8 +66,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
             protected String doInBackground(String... params) {
                 HashMap<String, String> data = new HashMap<String, String>();
                 data.put("userId", params[0]);
-                data.put("oldPassword", params[1]);
-                data.put("newPassword", params[2]);
+                data.put("newPassword", params[1]);
 
                 String result = ruc.sendPostRequest(CHANGEPASSSWORD_URL, data);
                 return result;
@@ -78,10 +83,10 @@ public class ChangePasswordActivity extends AppCompatActivity {
             }
         }
 
-        User user = userLocalStore.getLoggedInUser();
+
 
         ChangePassword cp = new ChangePassword();
-        cp.execute(user.userId, oldPassword, newPassword1);
+        cp.execute(user.userId, newPassword1);
         if (cp.success) {
             user.password = newPassword1;
             userLocalStore.storeUserData(user);

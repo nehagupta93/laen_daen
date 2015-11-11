@@ -19,7 +19,7 @@ public class LoginActivity extends AppCompatActivity {
 
     UserLocalStore userLocalStore;
 
-    private static final String LOGIN_URL = "http://laendaen.esy.es/phpfiles/login.php";
+    private static final String LOGIN_URL = "http://31.170.165.112/laen_daen/login.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
