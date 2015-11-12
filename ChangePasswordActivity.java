@@ -19,7 +19,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
     UserLocalStore userLocalStore;
 
-    private static final String CHANGEPASSSWORD_URL = "http://31.170.165.112/laen_daen/changePassword.php";
+    private static final String CHANGEPASSSWORD_URL = "http://laendaen.esy.es/phpfiles/changePassword.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

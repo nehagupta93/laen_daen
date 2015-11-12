@@ -15,7 +15,7 @@ public class LaenDaen {
     boolean laendarConfirmation, daendarConfirmation;
     float amount;
 
-    private static final String LAENDAENDETAILS_URL = "http://31.170.165.112/laen_daen/getLaenDaenDetails.php";
+    private static final String LAENDAENDETAILS_URL = "http://laendaen.esy.es/phpfiles/getLaenDaenDetails.php";
 
     public LaenDaen(int index){
         this.index = index;

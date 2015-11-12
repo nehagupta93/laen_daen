@@ -16,7 +16,7 @@ public class ConfirmLaenDaenActivity extends AppCompatActivity {
     int index;
     float amount;
     String laendar, daendar;
-    private static final String CONFIRM_URL = "http://31.170.165.112/laen_daen/confirmLaenDaen.php";
+    private static final String CONFIRM_URL = "http://laendaen.esy.es/phpfiles/confirmLaenDaen.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

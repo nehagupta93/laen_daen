@@ -17,7 +17,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     private static String emailId;
     private static String newPassword;
 
-    private static final String FORGOTPASSWORD_URL = "http://31.170.165.112/laen_daen/forgotPassword.php";
+    private static final String FORGOTPASSWORD_URL = "http://laendaen.esy.es/phpfiles/forgotPassword.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

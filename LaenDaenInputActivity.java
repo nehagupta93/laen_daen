@@ -19,7 +19,7 @@ import java.util.HashMap;
 
 public class LaenDaenInputActivity extends AppCompatActivity {
 
-    private static final String ADDLAENDAEN_URL = "http://31.170.165.112/laen_daen/addLaenDaen.php";
+    private static final String ADDLAENDAEN_URL = "http://laendaen.esy.es/phpfiles/addLaenDaen.php";
 
     String laendar, daendar;
     DateService dateService;

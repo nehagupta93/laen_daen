@@ -19,8 +19,8 @@ public class VerifyEmailActivity extends AppCompatActivity {
     private static float balance;
     private static int verificationCode;
 
-    private static final String REGISTER_URL = "http://31.170.165.112/laen_daen/register.php";
-    private static final String EMAIL_VERIFY_URL = "http://31.170.165.112/laen_daen/verifyEmail.php";
+    private static final String REGISTER_URL = "http://laendaen.esy.es/phpfiles/register.php";
+    private static final String EMAIL_VERIFY_URL = "http://laendaen.esy.es/phpfiles/verifyEmail.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,16 +69,24 @@ public class VerifyEmailActivity extends AppCompatActivity {
     public void verifyButtonClicked(View view) {
 
         EditText codeInput = (EditText) findViewById(R.id.codeInput);
-        int inputCode = Integer.parseInt(codeInput.getText().toString());
+        String code = codeInput.getText().toString();
+        if (code.length()==0){
+            Toast.makeText(VerifyEmailActivity.this, "Please fill verification code", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (!isNumeric(code)){
+            Toast.makeText(VerifyEmailActivity.this, "invalid code", Toast.LENGTH_LONG).show();
+        }
+        int inputCode = Integer.parseInt(code);
 
         if (verificationCode != inputCode) {
-            Toast.makeText(VerifyEmailActivity.this, "Incorrect Code", Toast.LENGTH_LONG);
+            Toast.makeText(VerifyEmailActivity.this, "Incorrect Code", Toast.LENGTH_LONG).show();
             return;
         }
 
         class RegisterUser extends AsyncTask<String, Void, String>{
 
-            String nextActivity = "";
+            int success=0;
             ProgressDialog loading;
 
             RegisterUserClass ruc = new RegisterUserClass();
@@ -94,8 +102,8 @@ public class VerifyEmailActivity extends AppCompatActivity {
                 super.onPostExecute(s);
                 loading.dismiss();
                 Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
-                if(s.equals("Oops! Please try again"))
-                    nextActivity = "register";
+                if(s.equals("Successfully registered"))
+                    this.success = 1;
             }
 
             @Override
@@ -107,7 +115,7 @@ public class VerifyEmailActivity extends AppCompatActivity {
                 data.put("password", params[2]);
                 data.put("balance", params[3]);
 
-                String result = ruc.sendPostRequest(REGISTER_URL, data);
+                String result = ruc.sendPostRequest(REGISTER_URL, data).toString();
                 return result;
             }
         }
@@ -115,12 +123,22 @@ public class VerifyEmailActivity extends AppCompatActivity {
         RegisterUser ru = new RegisterUser();
         ru.execute(userId, emailId, password, balance+"");
 
-        User registeredData = new User(userId, emailId, password, balance);
-
-        if (ru.nextActivity.equals("register"))
-            startActivity(new Intent(this,  RegisterActivity.class));
-        else
+        if (ru.success==1)
             startActivity(new Intent(this, LoginActivity.class));
+        else
+            startActivity(new Intent(this, RegisterActivity.class));
 
+    }
+
+    public boolean isNumeric(String x){
+        int count = 0;
+        for(int i=0;i<x.length();i++){
+            char c=x.charAt(i);
+            if (c<48||c>57)
+                count++;
+        }
+        if (count==0)
+            return true;
+        return false;
     }
 }
